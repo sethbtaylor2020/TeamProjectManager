@@ -1,7 +1,27 @@
-# React + Vite
-# Team Project Manager - Project
+# Project Title
+Team Projects Management Tool
 
-This project originated from a group of students desire to improve team projects through tasks and acountability. It was initially designed for students, but can be adapted for any team project.
+## Team Members
+Seth Taylor, Kaden Boam, Matthew Morton, Jacob Strong
 
-## Examples
-to view the webpage, use: npm run dev
+## Software Description
+Solution for team projects, accountability tracking per sprint or unit.
+
+## Architecture
+Programming language: js, html
+Framework: Web Application
+Data Storage: Local, MySQL
+Development Tools: Github, VScode
+
+## Communication
+Discord group message.
+
+## Responsibilities
+Conducting Meetings: Seth
+Maintaining Team Assignment List: Seth
+Ensuring Github is working: Kaden
+Maintaining Documentation: Seth
+Create & Display Presentations: Matthew
+Submit Team Assignments: Jacob
+
+to run the website: npm run dev
