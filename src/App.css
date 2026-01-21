@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.Columns {
+  display: flex;
+}
+
+.Column {
+  flex: 1;
+  padding: 1rem;
+  border: 5px solid white;
+  padding-top: 0;
+}
+
+h2 {
+  margin: 0;
+}
