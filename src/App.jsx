@@ -3,7 +3,7 @@ import './App.css'
 function App() {
   //This will be replaced by a database pull
   const users = [
-    { id: 1, name: "Team" },       // the whole team column
+    { id: 1, name: "Henry" },       // the whole team column
     { id: 2, name: "John" },
     { id: 3, name: "Alice" },
     { id: 4, name: "Bob" }
@@ -23,6 +23,9 @@ function App() {
         <h1>Team Project Helper</h1>
       </div>
       <div className="Columns">
+        <div className="Column">
+          <h2>Team</h2>
+        </div>
         {users.map(user => (
           /* Users flow through here */
           <div key={user.id} className="Column">
