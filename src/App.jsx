@@ -5,17 +5,15 @@ import './App.css'
 
 function App() {
   const users = [
-    { id: 1, name: "Team" },       // the whole team column
-    { id: 2, name: "John" },
-    { id: 3, name: "Alice" },
-    { id: 4, name: "Bob" }
+    { id: 1, name: "John" },
+    { id: 2, name: "Alice" },
+    { id: 3, name: "Bob" }
   ];
 
   const assignments = [
-    { id: 1, userId: 1, text: "Finish project proposal" },
-    { id: 2, userId: 2, text: "Write API endpoints" },
-    { id: 3, userId: 3, text: "Create UI mockups" },
-    { id: 4, userId: 4, text: "Set up database schema" }
+    { id: 1, userId: 1, text: "Write API endpoints" },
+    { id: 2, userId: 2, text: "Create UI mockups" },
+    { id: 3, userId: 3, text: "Set up database schema" }
   ];
 
   return (
@@ -24,6 +22,9 @@ function App() {
         <h1>Team Project Helper</h1>
       </div>
       <div className="Columns">
+        <div className="Column">
+          <h2>Team</h2>
+        </div>
         {users.map(user => (
           <div key={user.id} className="Column">
             <h2>{user.name}</h2>
