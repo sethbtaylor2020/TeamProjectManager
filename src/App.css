@@ -11,6 +11,7 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 body {
   background: var(--bg-color);
   color: var(--text-color);
@@ -21,6 +22,36 @@ body {
   display: flex;
   gap: 20px;
   padding: 20px;
+=======
+/* Layout container for all columns */
+.Columns {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Each individual column */
+.Column {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 150px;
+  border: 1px solid #ddd;
+  flex: 1;
+}
+
+/* Column titles */
+.Column h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+>>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
 }
 
 /* Each individual column */
@@ -57,6 +88,7 @@ h2 {
   margin: 0;
 }
 
+<<<<<<< HEAD
 form p {
   margin: 0;
 }
@@ -64,6 +96,11 @@ form p {
 /* Link to Page 2 */
 a {
   display: block;
+=======
+/* Link to Page 2 */
+a {
+  display: inline-block;
+>>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
   margin: 10px 0 20px 0;
   font-weight: bold;
   color: #0077cc;
@@ -74,6 +111,7 @@ a:hover {
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 /* ------ This is for toggling ------------ */
 .toggle {
   transition: all 2s ease;
@@ -192,3 +230,5 @@ button:hover {
   border-radius: 8px;
   margin-bottom: 1rem;
 }
+=======
+>>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
