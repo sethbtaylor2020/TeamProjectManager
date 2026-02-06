@@ -23,3 +23,5 @@ Ensuring Github is working: Kaden
 Maintaining Documentation: Seth
 Create & Display Presentations: Matthew
 Submit Team Assignments: Jacob
+
+to run the website: npm run dev
