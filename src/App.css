@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
 <<<<<<< HEAD
 body {
   background: var(--bg-color);
@@ -32,7 +37,7 @@ body {
 
 /* Each individual column */
 .Column {
-  background: #f5f5f5;
+  background: var(--box-color);
   padding: 15px;
   border-radius: 8px;
   min-width: 150px;
