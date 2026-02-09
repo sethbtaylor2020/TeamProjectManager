@@ -1,3 +1,9 @@
+:root {
+  --bg-color: #ffffff;
+  --box-color: #eeeeee;
+  --text-color: #222222;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,17 +11,55 @@
   text-align: center;
 }
 
-.Columns {
-  display: flex;
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
+/* Layout container for all columns */
+.Columns {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Each individual column */
 .Column {
+  background: var(--box-color);
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 150px;
+  border: 1px solid #ddd;
   flex: 1;
-  padding: 1rem;
-  border: 5px solid white;
-  padding-top: 0;
+}
+
+/* Column titles */
+.Column h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h2 {
   margin: 0;
 }
+
+/* Link to Page 2 */
+a {
+  display: inline-block;
+  margin: 10px 0 20px 0;
+  font-weight: bold;
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
