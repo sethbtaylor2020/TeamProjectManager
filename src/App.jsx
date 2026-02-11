@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './App.css'
+import supabase from "./config/supabaseClient"
 
 function App() {
   //This will be replaced by a database pull
@@ -9,6 +10,10 @@ function App() {
     { id: 3, name: "Alice" },
     { id: 4, name: "Bob" }
   ]
+
+// TEST!!!! IF BROKEN COMMENT OUT
+// console.log(supabase)
+// END TEST AREA
 
   //This will be replaced by a database pull as well
   const assignments = [
