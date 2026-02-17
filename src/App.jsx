@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './App.css'
 import { useState } from 'react';
+import supabase from "./config/supabaseClient"
 
 function App() {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
@@ -34,6 +35,10 @@ function App() {
     { id: 3, name: "Alice" },
     { id: 4, name: "Bob" }
   ]
+
+// TEST!!!! IF BROKEN COMMENT OUT
+// console.log(supabase)
+// END TEST AREA
 
   //This will be replaced by a database pull as well
   const assignments = [
