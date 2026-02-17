@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import './Page2.css'
 
 function Page2() {
   const [form, setForm] = useState({ name: "", password: "", message: "" }); 
