@@ -1,7 +1,32 @@
 import { Link } from 'react-router-dom'
 import './App.css'
+import { useState } from 'react';
 
 function App() {
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const [showAssignmentMenu, setShowAssignmentMenu] = useState(false);
+
+  // Assignmnet functionality
+  const [form, setForm] = useState({ name: "", password: "", message: "" }); 
+  const [feedback, setFeedback] = useState("");
+
+  function handleChange(e) { 
+    setForm({ ...form, [e.target.name]: e.target.value }); 
+  } 
+
+  function handleSubmit(e) { 
+    // prevents page reload console.log("Form submitted:", form); 
+    e.preventDefault();
+
+    // Build the message
+    const msg = `Hello ${form.name}! Thank you for your message. We will get back with you as soon as possible!`;
+    setFeedback(msg);
+
+    // Toggle the moveDown class on the body
+    document.body.classList.toggle("moveDown");
+    setForm({ name: "", password: "", message: "" });
+  }
+
   //This will be replaced by a database pull
   const users = [
     { id: 1, name: "Henry" },       // the whole team column
