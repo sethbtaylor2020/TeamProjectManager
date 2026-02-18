@@ -15,7 +15,28 @@ function App() {
     { id: 2, userId: 2, text: "Write API endpoints" },
     { id: 3, userId: 3, text: "Create UI mockups" },
     { id: 4, userId: 4, text: "Set up database schema" }
-  ];
+  ]
+
+  function setTheme(theme) {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.style.setProperty("--bg-color", "#1a1a1a");
+      root.style.setProperty("--box-color", "#333333");
+      root.style.setProperty("--text-color", "#f0f0f0");
+    }
+
+    if (theme === "ocean") {
+      root.style.setProperty("--bg-color", "#003f5c");
+      root.style.setProperty("--box-color", "#2f4b7c");
+      root.style.setProperty("--text-color", "#ffffff");
+    }
+
+    if (theme === "sunset") {
+      root.style.setProperty("--bg-color", "#ff9e80");
+      root.style.setProperty("--box-color", "#ff6e40");
+      root.style.setProperty("--text-color", "#3a1f04");
+    }
+  }
 
   return (
     <>
@@ -39,6 +60,25 @@ function App() {
             }
           </div>
         ))}
+      </div>
+      <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
+      <button onClick={() => setShowAssignmentMenu(!showAssignmentMenu)}>Add Tasks</button>
+      <div>
+        <form class="box" onSubmit={handleSubmit} className={showAssignmentMenu ? "assignment-visible" : "assingment-hidden"}>
+          <p>User Name</p>
+          <input name="name" type="text" value={form.name} onChange={handleChange} placeholder="User name" />
+          <p>Password</p>
+          <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" />
+          <p>Task</p>
+          <textarea name="message" value={form.message} onChange={handleChange} placeholder="Your message" />
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div id="theme" className={showThemeMenu ? "theme-visible" : "theme-hidden"}>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("ocean")}>Ocean</button>
+        <button onClick={() => setTheme("sunset")}>Sunset</button>
       </div>
     </>
   )
