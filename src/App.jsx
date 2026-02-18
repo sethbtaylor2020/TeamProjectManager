@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom'
 import './App.css'
+<<<<<<< HEAD
+=======
+import { useState } from 'react';
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
 import supabase from "./config/supabaseClient"
 
 function App() {
@@ -44,10 +48,14 @@ function App() {
   ]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
   //Selection of themes
 >>>>>>> 7fe0eb9 (Added_animation_for_expanding_tasks_and_themes)
+=======
+  //Selection of themes
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
   function setTheme(theme) {
     const root = document.documentElement;
     if (theme === "dark") {
@@ -68,8 +76,11 @@ function App() {
       root.style.setProperty("--text-color", "#3a1f04");
     }
   }
+<<<<<<< HEAD
 =======
 >>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
+=======
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
 
   return (
     <>
