@@ -25,12 +25,14 @@ body {
 
 /* Each individual column */
 .Column {
+  display: inline;
   background: var(--box-color);
   padding: 15px;
   border-radius: 8px;
   min-width: 150px;
   border: 1px solid #ddd;
   flex: 1;
+  margin-top: 20px;
 }
 
 /* Column titles */
@@ -40,19 +42,28 @@ body {
   text-align: center;
 }
 
-/* Page title */
+/* Page title 
 h1 {
+  display: inline;
   text-align: center;
-  margin-bottom: 20px;
-}
+  background: var(--box-color);
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 150px;
+  border: 1px solid #ddd;
+}*/
 
 h2 {
   margin: 0;
 }
 
+form p {
+  margin: 0;
+}
+
 /* Link to Page 2 */
 a {
-  display: inline-block;
+  display: block;
   margin: 10px 0 20px 0;
   font-weight: bold;
   color: #0077cc;
@@ -63,32 +74,28 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ------ This is for the assingment hiding and showing ------------ */
-#assignment {
-  transition: all 4s ease;
+/* ------ This is for toggling ------------ */
+.toggle {
+  transition: all 2s ease;
   overflow: hidden;
 }
+/* ------ This is for the assignment hiding and showing ------------ */
 
 /* Hidden state */
-.assingment-hidden {
-  opacity: 0;
+.assignment-hidden {
+  opacity: 0; 
   max-height: 0;
   pointer-events: none;
 }
 
 /* Visible state */
-.assingment-visible {
-  opacity: 1;
-  max-height: 200px; /* adjust based on your content */
-  pointer-events: auto;
+.assignment-visible {
+  opacity: 1; 
+  max-height: 600px;
+  pointer-events: none;
 }
-/* ---------------------------------------------------------------*/
 
 /* ------ This is for the theme hiding and showing ------------ */
-#theme {
-  transition: all 1s ease;
-  overflow: hidden;
-}
 
 /* Hidden state */
 .theme-hidden {
@@ -151,12 +158,13 @@ textarea {
   resize: vertical;
 }
 
+/* -------- Everything Button Wise --------- */
 button {
   padding: 0.7em 0.7em;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
-  background-color: white;
-  color: #000000;
+  background-color: var(--box-color);
+  color: white;
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -166,8 +174,8 @@ button {
 }
 
 button:hover {
-  background-color: var(--box-color);
-  color: white;
+  background-color: white;
+  color: #000000;
 }
 
 .box{
