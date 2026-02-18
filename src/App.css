@@ -37,30 +37,6 @@ body {
 
 /* Each individual column */
 .Column {
-  background: var(--box-color);
-  padding: 15px;
-  border-radius: 8px;
-  min-width: 150px;
-  border: 1px solid #ddd;
-  flex: 1;
-}
-
-/* Column titles */
-.Column h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-/* Page title */
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
->>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
-}
-
-/* Each individual column */
-.Column {
   display: inline;
   background: var(--box-color);
   padding: 15px;
@@ -93,6 +69,10 @@ h2 {
   margin: 0;
 }
 
+form p {
+  margin: 0;
+}
+
 <<<<<<< HEAD
 form p {
   margin: 0;
@@ -104,8 +84,7 @@ a {
 =======
 /* Link to Page 2 */
 a {
-  display: inline-block;
->>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
+  display: block;
   margin: 10px 0 20px 0;
   font-weight: bold;
   color: #0077cc;
@@ -116,7 +95,6 @@ a:hover {
   text-decoration: underline;
 }
 
-<<<<<<< HEAD
 /* ------ This is for toggling ------------ */
 .toggle {
   transition: all 2s ease;
