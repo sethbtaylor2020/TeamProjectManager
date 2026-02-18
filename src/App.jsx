@@ -1,6 +1,33 @@
 import { Link } from 'react-router-dom'
 import './App.css'
 import supabase from "./config/supabaseClient"
+// import { useEffect, useState } from 'react'
+
+// const projects = () => {
+//   const [fetchError, setFetchError] = useState(null)
+//   const [taskData, setTaskData] = useState(null)
+
+//   useEffect(() => {
+//     const fetchTaskData = async () => {
+//       const { data, error } = await supabase
+//       .from('Projects')
+//       .select()
+
+//       if(error){
+//         setFetchError('could not fetch data')
+//         setTaskData(null)
+//         console.log(error)
+//       }
+//       if(data) {
+//         setTaskData(data)
+//         setFetchError(null)
+//       }
+//     }
+
+//     fetchTaskData()
+
+//   }, [])
+// }
 
 function App() {
   //This will be replaced by a database pull
@@ -71,6 +98,14 @@ function App() {
       <button onClick={() => setTheme("dark")}>Dark</button>
       <button onClick={() => setTheme("ocean")}>Ocean</button>
       <button onClick={() => setTheme("sunset")}>Sunset</button>
+{/* 
+      <div>
+        {fetchError && (<p>{fetchError}</p>)}
+        {projects && (
+          <div>{projects.project_name}</div>
+        )}
+
+      </div> */}
     </>
   )
 }

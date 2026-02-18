@@ -24,4 +24,5 @@ Maintaining Documentation: Seth
 Create & Display Presentations: Matthew
 Submit Team Assignments: Jacob
 
+run this command:  npm install @supabase/supabase-js
 to run the website: npm run dev
