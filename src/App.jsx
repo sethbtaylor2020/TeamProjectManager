@@ -1,46 +1,44 @@
 import { Link } from 'react-router-dom'
 import './App.css'
+<<<<<<< HEAD
+=======
+import { useState } from 'react';
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
 import supabase from "./config/supabaseClient"
-// import { useEffect, useState } from 'react'
 
-// const projects = () => {
-//   const [fetchError, setFetchError] = useState(null)
-//   const [taskData, setTaskData] = useState(null)
-
-//   useEffect(() => {
-//     const fetchTaskData = async () => {
-//       const { data, error } = await supabase
-//       .from('Projects')
-//       .select()
-
-//       if(error){
-//         setFetchError('could not fetch data')
-//         setTaskData(null)
-//         console.log(error)
-//       }
-//       if(data) {
-//         setTaskData(data)
-//         setFetchError(null)
-//       }
-//     }
-
-//     fetchTaskData()
-
-//   }, [])
-// }
 
 function App() {
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const [showAssignmentMenu, setShowAssignmentMenu] = useState(false);
+
+  // Assignmnet functionality
+  const [form, setForm] = useState({ name: "", password: "", message: "" }); 
+  const [feedback, setFeedback] = useState("");
+
+  function handleChange(e) { 
+    setForm({ ...form, [e.target.name]: e.target.value }); 
+  } 
+
+  function handleSubmit(e) { 
+    // prevents page reload console.log("Form submitted:", form); 
+    e.preventDefault();
+
+    // Build the message
+    const msg = `Hello ${form.name}! Thank you for your message. We will get back with you as soon as possible!`;
+    setFeedback(msg);
+
+    // Toggle the moveDown class on the body
+    document.body.classList.toggle("moveDown");
+    setForm({ name: "", password: "", message: "" });
+  }
+
   //This will be replaced by a database pull
   const users = [
     { id: 1, name: "Henry" },       // the whole team column
     { id: 2, name: "John" },
     { id: 3, name: "Alice" },
     { id: 4, name: "Bob" }
-  ]
-
-// TEST!!!! IF BROKEN COMMENT OUT
-// console.log(supabase)
-// END TEST AREA
+  ];
 
   //This will be replaced by a database pull as well
   const assignments = [
@@ -49,6 +47,16 @@ function App() {
     { id: 3, userId: 3, text: "Create UI mockups" },
     { id: 4, userId: 4, text: "Set up database schema" }
   ]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+=======
+  //Selection of themes
+>>>>>>> 7fe0eb9 (Added_animation_for_expanding_tasks_and_themes)
+=======
+  //Selection of themes
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
   function setTheme(theme) {
     const root = document.documentElement;
     if (theme === "dark") {
@@ -69,43 +77,54 @@ function App() {
       root.style.setProperty("--text-color", "#3a1f04");
     }
   }
+<<<<<<< HEAD
+=======
+>>>>>>> 16c7a70 (changed_from_react_strict_to_react_router)
+=======
+>>>>>>> 7fe0eb919b865e9c84cb3b0be8b27e3915a828cc
 
   return (
     <>
-      <Link to="/page2">Go to Page 2</Link>
-
       <div>
         <h1>Team Project Helper</h1>
       </div>
-
       <div className="Columns">
         <div className="Column">
           <h2>Team</h2>
         </div>
-
         {users.map(user => (
+          /* Users flow through here */
           <div key={user.id} className="Column">
             <h2>{user.name}</h2>
-
+            {/* Assignments flow through this */}
             {assignments
               .filter(a => a.userId === user.id)
               .map(a => (
                 <p key={a.id}>{a.text}</p>
-              ))}
+              ))
+            }
           </div>
         ))}
       </div>
-      <button onClick={() => setTheme("dark")}>Dark</button>
-      <button onClick={() => setTheme("ocean")}>Ocean</button>
-      <button onClick={() => setTheme("sunset")}>Sunset</button>
-{/* 
-      <div>
-        {fetchError && (<p>{fetchError}</p>)}
-        {projects && (
-          <div>{projects.project_name}</div>
-        )}
+      <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
+      <button onClick={() => setShowAssignmentMenu(!showAssignmentMenu)}>Add Tasks</button>
+      <div className={`toggle ${showAssignmentMenu ? "assignment-visible" : "assignment-hidden"}`}>
+        <form onSubmit={handleSubmit}>
+          <p>User Name</p>
+          <input name="name" type="text" value={form.name} onChange={handleChange} placeholder="User name" />
+          <p>Password</p>
+          <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password" />
+          <p>Task</p>
+          <textarea name="message" value={form.message} onChange={handleChange} placeholder="Your message" />
 
-      </div> */}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <div className={`toggle ${showThemeMenu ? "theme-visible" : "theme-hidden"}`}>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("ocean")}>Ocean</button>
+        <button onClick={() => setTheme("sunset")}>Sunset</button>
+      </div>
     </>
   )
 }
