@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import './App.css'
 import { useState } from 'react';
 import supabase from "./config/supabaseClient"
@@ -7,6 +6,7 @@ import supabase from "./config/supabaseClient"
 function App() {
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   const [showAssignmentMenu, setShowAssignmentMenu] = useState(false);
+  const [showProjectSelection, setShowProjectSelection] = useState(false);
 
   // Assignmnet functionality
   const [form, setForm] = useState({ name: "", password: "", message: "" }); 
@@ -51,18 +51,21 @@ function App() {
       root.style.setProperty("--bg-color", "#1a1a1a");
       root.style.setProperty("--box-color", "#333333");
       root.style.setProperty("--text-color", "#f0f0f0");
+      root.style.setProperty("--border-color", "#ddd");
     }
 
     if (theme === "ocean") {
       root.style.setProperty("--bg-color", "#003f5c");
       root.style.setProperty("--box-color", "#2f4b7c");
       root.style.setProperty("--text-color", "#ffffff");
+      root.style.setProperty("--border-color", "#ddd");
     }
 
     if (theme === "sunset") {
       root.style.setProperty("--bg-color", "#ff9e80");
       root.style.setProperty("--box-color", "#ff6e40");
       root.style.setProperty("--text-color", "#3a1f04");
+      root.style.setProperty("--border-color", "#3a1f04");
     }
   }
 
@@ -92,6 +95,7 @@ function App() {
       </div>
       <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
       <button onClick={() => setShowAssignmentMenu(!showAssignmentMenu)}>Add Tasks</button>
+      <button onClick={() => setShowProjectSelection(!showProjectSelection)}>Projects</button>
       <div className={`toggle ${showAssignmentMenu ? "assignment-visible" : "assignment-hidden"}`}>
         <form onSubmit={handleSubmit}>
           <p>User Name</p>
@@ -108,6 +112,9 @@ function App() {
         <button onClick={() => setTheme("dark")}>Dark</button>
         <button onClick={() => setTheme("ocean")}>Ocean</button>
         <button onClick={() => setTheme("sunset")}>Sunset</button>
+      </div>
+      <div className={`toggle ${showProjectSelection ? "project-visible" : "project-hidden"}`}>
+        <p>Fill</p>
       </div>
     </>
   )

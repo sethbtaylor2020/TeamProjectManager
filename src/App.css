@@ -2,6 +2,7 @@
   --bg-color: #ffffff;
   --box-color: #eeeeee;
   --text-color: #222222;
+  --border-color: #ddd;
 }
 
 #root {
@@ -31,7 +32,7 @@ body {
   padding: 15px;
   border-radius: 8px;
   min-width: 150px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   flex: 1;
   margin-top: 20px;
 }
@@ -51,7 +52,7 @@ h1 {
   padding: 20px;
   border-radius: 8px;
   min-width: 150px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
 }*/
 
 h2 {
@@ -86,14 +87,12 @@ a:hover {
 .assignment-hidden {
   opacity: 0; 
   max-height: 0;
-  pointer-events: none;
 }
 
 /* Visible state */
 .assignment-visible {
   opacity: 1; 
   max-height: 600px;
-  pointer-events: none;
 }
 
 /* ------ This is for the theme hiding and showing ------------ */
@@ -107,6 +106,22 @@ a:hover {
 
 /* Visible state */
 .theme-visible {
+  opacity: 1;
+  max-height: 200px; /* adjust based on your content */
+  pointer-events: auto;
+}
+
+/* ------ This is for the projects hiding and showing ------------ */
+
+/* Hidden state */
+.project-hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+/* Visible state */
+.project-visible {
   opacity: 1;
   max-height: 200px; /* adjust based on your content */
   pointer-events: auto;
@@ -144,7 +159,7 @@ textarea {
   border-radius: 5px;
   background-color: white;
   color: black;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-color: black;
 }
 
@@ -162,10 +177,10 @@ textarea {
 /* -------- Everything Button Wise --------- */
 button {
   padding: 0.7em 0.7em;
-  border: 1px solid white;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   background-color: var(--box-color);
-  color: white;
+  color: var(--text-color);
   font-size: 1em;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -175,8 +190,13 @@ button {
 }
 
 button:hover {
-  background-color: white;
-  color: #000000;
+  background-color: var(--text-color);
+  color: var(--box-color);
+}
+
+button:active {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .box{
