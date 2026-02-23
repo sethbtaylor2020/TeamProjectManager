@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import './App.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import supabase from "./config/supabaseClient"
 
 
