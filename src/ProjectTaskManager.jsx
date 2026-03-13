@@ -25,7 +25,10 @@ function ProjectTaskManager() {
   const [loadingUsers, setLoadingUsers] = useState(false)
   const [loadingTasks, setLoadingTasks] = useState(false)
 
-  // IDK
+  // ─── STATE FOR Notification ───────────────────────────────────────────────────
+  const [lateSprintWarnings, setLateSprintWarnings] = useState([]);
+
+  // ─── Function and States for Themes ─────────────────────────────────────────── 
 
   const [showThemeMenu, setShowThemeMenu] = useState(false);
   function setTheme(themeName) {
@@ -189,6 +192,18 @@ function ProjectTaskManager() {
       console.error('Error loading tasks:', error2)
     } else {
       setUserTasks(tasks)
+      // --- Notification thing ---
+      // Assume project has a field "current_sprint"
+      const project = projects.find(p => p.project_id === projectId);
+      const currentSprint = 2;
+
+      // Filter tasks where sprint_num is past
+      const late = tasks
+        .filter(t => !t.complete && t.sprint_num < currentSprint)
+        .sort((a, b) => b.points - a.points); // order by points desc
+
+      setLateSprintWarnings(late);
+      // -- Notification thing end ---
       console.log('Loaded tasks for user', userId, 'in project', projectId, ':', tasks)
     }
 
@@ -338,6 +353,19 @@ function ProjectTaskManager() {
         <button onClick={() => setTheme("sand")}>Sand</button>
         <button onClick={() => setTheme("midnight")}>Midnight</button>
       </div>
+      {/* Notification html stuff */}
+      {lateSprintWarnings.length > 0 && (
+        <div className="late-warning-box">
+          <h4>⚠ Past Sprint Tasks</h4>
+          <ul>
+            {lateSprintWarnings.map(t => (
+              <li key={t.task_id}>
+                <strong>{t.points} pts</strong> — {t.description} (Sprint {t.sprint_num})
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   )
 }

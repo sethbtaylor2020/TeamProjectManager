@@ -204,3 +204,33 @@ button:hover {
   border-radius: 8px;
   margin-bottom: 1rem;
 }
+
+/* Notification Css */
+.late-warning-box {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #ffcc00;
+  color: #3a1f04;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 260px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 9999;
+  font-family: sans-serif;
+}
+
+.late-warning-box h4 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+}
+
+.late-warning-box ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.late-warning-box li {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
