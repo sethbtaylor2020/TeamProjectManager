@@ -1,9 +1,11 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 // THREE DYNAMIC DATASETS
 // ═══════════════════════════════════════════════════════════════════════════════
-
+import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import supabase from './config/supabaseClient'
+import './PTM.css'
+import { themes } from './theme'
 
 function ProjectTaskManager() {
   // ─── STATE FOR THE THREE DATASETS ─────────────────────────────────────────────
@@ -22,6 +24,41 @@ function ProjectTaskManager() {
   const [loadingProjects, setLoadingProjects] = useState(true)
   const [loadingUsers, setLoadingUsers] = useState(false)
   const [loadingTasks, setLoadingTasks] = useState(false)
+
+  // IDK
+
+  const [showThemeMenu, setShowThemeMenu] = useState(false);
+  function setTheme(themeName) {
+    const root = document.documentElement;
+    const theme = themes[themeName];
+
+    if (!theme) return;
+
+    Object.entries(theme).forEach(([key, value]) => {
+    root.style.setProperty(key, value);
+  });
+
+  async function toggleTask(taskId, currentValue) {
+    // 1. Update Supabase
+    const { error } = await supabase
+      .from('Tasks')
+      .update({ complete: !currentValue })
+      .eq('task_id', taskId);
+
+    if (error) {
+      console.error("Error updating task:", error);
+      return;
+    }
+
+    // 2. Update local state
+    setUserTasks(prev =>
+      prev.map(t =>
+        t.task_id === taskId ? { ...t, complete: !currentValue } : t
+      )
+    );
+  }
+}
+
 
   // ═══════════════════════════════════════════════════════════════════════════════
   // DATASET 1: LOAD ALL PROJECTS (runs once when component loads)
@@ -168,69 +205,71 @@ function ProjectTaskManager() {
 
   return (
     <div style={{ padding: '20px' }}>
+      <Link to="/projects">Old Things</Link>
       <h1>Project Task Manager</h1>
 
       {/* ─── PROJECT SELECTOR ─────────────────────────────────────────────── */}
-      
-      <div style={{ marginBottom: '20px' }}>
-        <label>
-          <strong>Select Project: </strong>
-          <select 
-            value={selectedProjectId || ''} 
-            onChange={(e) => {
-              const projectId = e.target.value ? Number(e.target.value) : null
-              setSelectedProjectId(projectId)
-              setSelectedUserId(null)  // Reset user selection
-            }}
-          >
-            <option value="">-- Choose a project --</option>
-            {projects.map(project => (
-              <option key={project.project_id} value={project.project_id}>
-                {project.project_name}
-              </option>
-            ))}
-          </select>
-        </label>
-        
-        <div style={{ marginTop: '10px', color: '#666' }}>
-          Total projects: {projects.length}
-        </div>
-      </div>
-
-      {/* ─── USER SELECTOR ────────────────────────────────────────────────── */}
-      
-      {selectedProjectId && (
-        <div style={{ marginBottom: '20px', paddingLeft: '20px' }}>
-          <label>
-            <strong>Select User: </strong>
-            {loadingUsers ? (
-              <span>Loading users...</span>
-            ) : (
-              <select 
-                value={selectedUserId || ''} 
-                onChange={(e) => {
-                  const userId = e.target.value ? Number(e.target.value) : null
-                  setSelectedUserId(userId)
-                }}
-              >
-                <option value="">-- Choose a user --</option>
-                {usersInProject.map(user => (
-                  <option key={user.user_id} value={user.user_id}>
-                    {user.alias} ({user.username})
-                  </option>
-                ))}
-              </select>
-            )}
+      <div className="head_box">
+        <div style={{ marginBottom: '20px' }}>
+          <label> {/* Edit UI */}
+            <strong>Select Project: </strong>
+            <select 
+              value={selectedProjectId || ''} 
+              onChange={(e) => {
+                const projectId = e.target.value ? Number(e.target.value) : null
+                setSelectedProjectId(projectId)
+                setSelectedUserId(null)  // Reset user selection
+              }}
+            >
+              <option value="">-- Choose a project --</option>
+              {projects.map(project => (
+                <option key={project.project_id} value={project.project_id}>
+                  {project.project_name}
+                </option>
+              ))}
+            </select>
           </label>
           
-          <div style={{ marginTop: '10px', color: '#666' }}>
-            Users in this project: {usersInProject.length}
+          <div style={{ marginTop: '10px'}}>
+            Total projects: {projects.length}
           </div>
         </div>
-      )}
+
+        {/* ─── USER SELECTOR ────────────────────────────────────────────────── */}
+        {/* Edit UI */}
+        {selectedProjectId && (
+          <div style={{ marginBottom: '20px', paddingLeft: '20px' }}>
+            <label>
+              <strong>Select User: </strong>
+              {loadingUsers ? (
+                <span>Loading users...</span>
+              ) : (
+                <select 
+                  value={selectedUserId || ''} 
+                  onChange={(e) => {
+                    const userId = e.target.value ? Number(e.target.value) : null
+                    setSelectedUserId(userId)
+                  }}
+                >
+                  <option value="">-- Choose a user --</option>
+                  {usersInProject.map(user => (
+                    <option key={user.user_id} value={user.user_id}>
+                      {user.alias} ({user.username})
+                    </option>
+                  ))}
+                </select>
+              )}
+            </label>
+            
+            <div style={{ marginTop: '10px'}}>
+              Users in this project: {usersInProject.length}
+            </div>
+          </div>
+          )}
+      </div>
 
       {/* ─── TASKS DISPLAY ────────────────────────────────────────────────── */}
-      
+      {/* Edit UI */}
       {selectedUserId && selectedProjectId && (
         <div style={{ marginTop: '20px', paddingLeft: '40px' }}>
           <h3>Tasks</h3>
@@ -241,7 +280,7 @@ function ProjectTaskManager() {
             <div>No tasks found for this user in this project.</div>
           ) : (
             <>
-              <div style={{ marginBottom: '10px', color: '#666' }}>
+              <div style={{ marginBottom: '10px'}}>
                 Total tasks: {userTasks.length}
               </div>
               
@@ -254,14 +293,14 @@ function ProjectTaskManager() {
                       padding: '10px', 
                       border: '1px solid #ddd',
                       borderRadius: '4px',
-                      backgroundColor: task.complete ? '#f0f0f0' : 'white'
+                      backgroundColor: task.complete ? 'var()' : 'var(--box-color)'
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <input 
-                        type="checkbox" 
+                      <input
+                        type="checkbox"
                         checked={task.complete}
-                        readOnly
+                        onChange={() => toggleTask(task.task_id, task.complete)}
                       />
                       <span style={{ 
                         textDecoration: task.complete ? 'line-through' : 'none',
@@ -272,13 +311,12 @@ function ProjectTaskManager() {
                       <span style={{ 
                         padding: '2px 8px',
                         backgroundColor: task.color,
-                        color: 'white',
                         borderRadius: '3px',
                         fontSize: '12px'
                       }}>
                         {task.points} pts
                       </span>
-                      <span style={{ color: '#666', fontSize: '12px' }}>
+                      <span style={{ fontSize: '12px' }}>
                         Sprint {task.sprint_num}
                       </span>
                     </div>
@@ -289,6 +327,17 @@ function ProjectTaskManager() {
           )}
         </div>
       )}
+      <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
+      <div className={`toggle ${showThemeMenu ? "theme-visible" : "theme-hidden"}`}>
+        <button onClick={() => setTheme("dark")}>Dark</button>
+        <button onClick={() => setTheme("ocean")}>Ocean</button>
+        <button onClick={() => setTheme("sunset")}>Sunset</button>
+        <button onClick={() => setTheme("forest")}>Forest</button>
+        <button onClick={() => setTheme("lavender")}>Lavender</button>
+        <button onClick={() => setTheme("cyberpunk")}>Cyberpunk</button>
+        <button onClick={() => setTheme("sand")}>Sand</button>
+        <button onClick={() => setTheme("midnight")}>Midnight</button>
+      </div>
     </div>
   )
 }

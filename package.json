@@ -1,7 +1,8 @@
 {
   "name": "my-app",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
+  "homepage": "https://sethbtaylor2020.github.io/TeamProjectManager/",
   "type": "module",
   "scripts": {
     "dev": "vite",

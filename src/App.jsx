@@ -1,4 +1,4 @@
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './App.css'
 import { useState, useEffect } from 'react';
 import supabase from "./config/supabaseClient"
@@ -68,6 +68,8 @@ function App() {
 
   return (
     <>
+      <Link to="/page2">Go to Page 2</Link>
+      <Link to="/">Go to other page</Link>
       <div>
         <h1>Team Project Helper</h1>
       </div>

@@ -20,7 +20,7 @@ Discord group message.
 Conducting Meetings: Seth
 Maintaining Team Assignment List: Seth
 Ensuring Github is working: Kaden
-Maintaining Documentation: Seth
+Maintaining Documentation: Seth Taylor
 Create & Display Presentations: Matthew
 Submit Team Assignments: Jacob
 
