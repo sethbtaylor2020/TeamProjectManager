@@ -47,6 +47,20 @@ function ProjectTaskManager() {
 
   const [showThemeMenu, setShowThemeMenu] = useState(false)
 
+  // State for warning
+  const [showLateWarnings, setShowLateWarnings] = useState(true);
+
+  // More late stuffs
+  useEffect(() => {
+    if (!showLateWarnings) {
+      const timer = setTimeout(() => {
+        setShowLateWarnings(true);
+      }, 30000); // 30 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, [showLateWarnings]);
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // HELPER FUNCTIONS
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -310,8 +324,15 @@ function ProjectTaskManager() {
       </div>
 
       {/* ─── LATE SPRINT WARNINGS ─────────────────────────────────────────── */}
-      {lateSprintWarnings.length > 0 && (
+      {lateSprintWarnings.length > 0 && showLateWarnings && (
         <div className="late-warning-box">
+          <button 
+            className="close-warning-btn"
+            onClick={() => setShowLateWarnings(false)}
+          >
+            ×
+          </button>
+
           <h4>⚠ Past Sprint Tasks</h4>
           <ul>
             {lateSprintWarnings.map(t => (
@@ -350,7 +371,7 @@ function ProjectTaskManager() {
                       backgroundColor: task.complete ? 'var()' : 'var(--box-color)'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px'}}>
                       <input
                         type="checkbox"
                         checked={task.complete}

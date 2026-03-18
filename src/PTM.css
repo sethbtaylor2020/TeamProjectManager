@@ -239,6 +239,24 @@ button:hover {
   font-size: 14px;
 }
 
+.late-warning-box {
+  padding: 15px;
+  border: 1px solid #f5c2c7;
+  background: #f8d7da;
+  border-radius: 6px;
+}
+
+.close-warning-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #721c24;
+}
+
 @media screen and (max-width: 900px) {
 
     /* Stack columns vertically */
@@ -286,5 +304,8 @@ button:hover {
       margin-bottom: 0 !important;
       padding-top: 0 !important;
       padding-bottom: 0 !important;
+  }
+  img {
+    max-width: 300px
   }
 }
