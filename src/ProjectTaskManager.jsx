@@ -372,7 +372,7 @@ function ProjectTaskManager() {
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px'}}>
-                      <input
+                      <input style={{width: '3%'}}
                         type="checkbox"
                         checked={task.complete}
                         onChange={() => handleToggleComplete(task.task_id, task.complete)}
