@@ -6,6 +6,20 @@ import { useState, useEffect } from 'react'
 import supabase from './config/supabaseClient'
 import './PTM.css'
 import { themes } from './theme'
+import { 
+  addTask, 
+  removeTask, 
+  updateTask, 
+  updateTaskStatus, 
+  reassignTaskUser, 
+  removeUserFromTask,
+  addUser, 
+  removeUser, 
+  addProject, 
+  removeProject, 
+  assignUserToProject, 
+  removeUserFromProject 
+} from './supabaseHelpers'
 
 function ProjectTaskManager() {
   // ─── STATE FOR THE THREE DATASETS ─────────────────────────────────────────────
