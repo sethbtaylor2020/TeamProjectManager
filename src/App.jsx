@@ -70,6 +70,7 @@ function App() {
     <>
       <Link to="/page2">Go to Page 2</Link>
       <Link to="/">Go to other page</Link>
+      <img src="qrCode.jpg" alt="QR code"></img>
       <div>
         <h1>Team Project Helper</h1>
       </div>

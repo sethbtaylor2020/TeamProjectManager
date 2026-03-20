@@ -2,7 +2,7 @@
 // SUPABASE DATABASE HELPER FUNCTIONS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-import supabase from './supabaseClient'
+import supabase from './config/supabaseClient'
 
 // ─── TASK FUNCTIONS ────────────────────────────────────────────────────────────
 

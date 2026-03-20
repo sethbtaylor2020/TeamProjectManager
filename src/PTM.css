@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+img {
+  max-width: 300px
+}
+
 .head_box {
   background: var(--box-color);
   color: var(--text-color);
@@ -233,4 +237,75 @@ button:hover {
 .late-warning-box li {
   margin-bottom: 6px;
   font-size: 14px;
+}
+
+.late-warning-box {
+  padding: 15px;
+  border: 1px solid #f5c2c7;
+  background: #f8d7da;
+  border-radius: 6px;
+}
+
+.close-warning-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #721c24;
+}
+
+@media screen and (max-width: 900px) {
+
+    /* Stack columns vertically */
+    .Columns {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .Column {
+        width: 100%;
+        display: block;
+        margin-top: 10px;
+    }
+
+    .moveDown {
+        margin-top: 3.5em;
+    }
+
+    nav, footer {
+        flex-direction: column;
+    }
+
+    nav a {
+        display: block;
+        padding: 15px;
+    }
+
+    .home-title {
+        font-size: 25px;
+    }
+
+    button { 
+        margin: 50px auto;
+        width: 60%;
+        justify-self: center;
+    }
+
+    footer {
+        margin-top: 25px;
+    }
+    /* Remove vertical spacing inside theme section */
+  .theme-visible * {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+  }
+  img {
+    max-width: 300px
+  }
 }
