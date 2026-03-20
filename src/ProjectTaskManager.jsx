@@ -80,6 +80,33 @@ function ProjectTaskManager() {
     }
   }, []);
 
+  // The happy button
+  const [showRickRoll, setShowRickRoll] = useState(false);
+
+  if (showRickRoll) {
+    return (
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: "black",
+          zIndex: 999999,
+        }}
+      >
+        <video
+          src="/rickroll.mp4"
+          autoPlay
+          controls={false}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+    );
+  }
+
   // ═══════════════════════════════════════════════════════════════════════════════
   // HELPER FUNCTIONS
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -248,7 +275,7 @@ function ProjectTaskManager() {
       }
     }
   }, [usersInProject]);
-  
+
 
   async function loadUserTasks(userId, projectId) {
     setLoadingTasks(true)
@@ -447,16 +474,21 @@ function ProjectTaskManager() {
       )}
 
       {/* ─── THEME SELECTOR ───────────────────────────────────────────────── */}
-      <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
+      <div className='toggle_theme'>
+        <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
+        <button onClick={() => setShowRickRoll(true)}>😋</button>
+      </div>
       <div className={`toggle ${showThemeMenu ? "theme-visible" : "theme-hidden"}`}>
-        <button onClick={() => setTheme("dark")}>Dark</button>
-        <button onClick={() => setTheme("ocean")}>Ocean</button>
-        <button onClick={() => setTheme("sunset")}>Sunset</button>
-        <button onClick={() => setTheme("forest")}>Forest</button>
-        <button onClick={() => setTheme("lavender")}>Lavender</button>
-        <button onClick={() => setTheme("cyberpunk")}>Cyberpunk</button>
-        <button onClick={() => setTheme("sand")}>Sand</button>
-        <button onClick={() => setTheme("midnight")}>Midnight</button>
+        <div className="theme-buttons">
+          <button onClick={() => setTheme("dark")}>Dark</button>
+          <button onClick={() => setTheme("ocean")}>Ocean</button>
+          <button onClick={() => setTheme("sunset")}>Sunset</button>
+          <button onClick={() => setTheme("forest")}>Forest</button>
+          <button onClick={() => setTheme("lavender")}>Lavender</button>
+          <button onClick={() => setTheme("cyberpunk")}>Cyberpunk</button>
+          <button onClick={() => setTheme("sand")}>Sand</button>
+          <button onClick={() => setTheme("midnight")}>Midnight</button>
+        </div>
       </div>
     </div>
   )

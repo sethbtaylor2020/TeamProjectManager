@@ -289,10 +289,15 @@ button:hover {
       font-size: 25px;
   }
 
-  button { 
+  .toggle_theme { 
       margin: 50px auto;
       width: 60%;
       justify-self: center;
+  }
+  .theme-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 
   footer {
