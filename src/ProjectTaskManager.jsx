@@ -83,30 +83,7 @@ function ProjectTaskManager() {
   // The happy button
   const [showRickRoll, setShowRickRoll] = useState(false);
 
-  if (showRickRoll) {
-    return (
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          background: "black",
-          zIndex: 999999,
-        }}
-      >
-        <video
-          src="/rickroll.mp4"
-          autoPlay
-          controls={false}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
-      </div>
-    );
-  }
-
+  
   // ═══════════════════════════════════════════════════════════════════════════════
   // HELPER FUNCTIONS
   // ═══════════════════════════════════════════════════════════════════════════════
@@ -324,6 +301,31 @@ function ProjectTaskManager() {
   // ═══════════════════════════════════════════════════════════════════════════════
   // RENDER
   // ═══════════════════════════════════════════════════════════════════════════════
+  if (showRickRoll) {
+    return (
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          background: "black",
+          zIndex: 999999999, // extremely high
+        }}
+      >
+        <video
+          src="rick_roll.mp4"
+          autoPlay
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </div>
+    );
+  }
 
   if (loadingProjects) {
     return <div>Loading projects...</div>
