@@ -26,3 +26,4 @@ Submit Team Assignments: Jacob
 
 run this command:  npm install @supabase/supabase-js
 to run the website: npm run dev
+To run donut use: npm install chart.js react-chartjs-2
