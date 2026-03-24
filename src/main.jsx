@@ -4,7 +4,7 @@ import App from './App.jsx'
 import Page2 from './Page2.jsx'
 import ProjectTaskManager from './ProjectTaskManager.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import DonutView from './DonutView.jsx'
+import DonutView from './Donutview.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
