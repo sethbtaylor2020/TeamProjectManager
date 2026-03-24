@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
 import supabase from './config/supabaseClient'
-import './DonutView.css'
+import './Donutview.css'
 
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend)
