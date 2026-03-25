@@ -25,10 +25,10 @@ function DonutView() {
   // ─── COLOR PALETTE ────────────────────────────────────────────────────────────
   
   const userColors = [
-    { base: '#3b82f6', dark: '#1e40af' }, // Blue
-    { base: '#10b981', dark: '#065f46' }, // Green
-    { base: '#f59e0b', dark: '#92400e' }, // Orange
-    { base: '#ef4444', dark: '#991b1b' }, // Red
+    { base: '#3eaad3', dark: '#3e80ee' }, // Blue
+    { base: '#ccff88', dark: '#bbee77' }, // Green
+    { base: '#f59e0b', dark: '#dd7711' }, // Orange
+    { base: '#ef4444', dark: '#c02020' }, // Red
     { base: '#8b5cf6', dark: '#5b21b6' }, // Purple
     { base: '#ec4899', dark: '#9f1239' }, // Pink
     { base: '#14b8a6', dark: '#115e59' }, // Teal
@@ -192,7 +192,7 @@ function DonutView() {
           {
             label: 'Project Total',
             data: [totalCompletedPoints, totalIncompletePoints],
-            backgroundColor: ['#10b981', '#e5e7eb'],  // Green for complete, gray for incomplete
+            backgroundColor: ['#77c000', '#e5e7eb'],  // Green for complete, gray for incomplete
             borderWidth: 2,
             borderColor: '#fff',
             weight: 1  // Smaller weight = inner ring
