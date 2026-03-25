@@ -45,5 +45,64 @@ export const themes = {
     "--bg-color": "#000814",
     "--box-color": "#001d3d",
     "--text-color": "#ffd60a"
+  },
+  neon: {
+  "--bg-color": "#0f0f0f",
+  "--box-color": "#39ff14",
+  "--text-color": "#d0ffd0"
+  },
+
+  rose: {
+    "--bg-color": "#ffe4e9",
+    "--box-color": "#ffb3c6",
+    "--text-color": "#5a1a2a"
+  },
+
+  arctic: {
+    "--bg-color": "#e0f7ff",
+    "--box-color": "#b3e5fc",
+    "--text-color": "#003344"
+  },
+
+  ember: {
+    "--bg-color": "#2b0000",
+    "--box-color": "#7a1f00",
+    "--text-color": "#ffb199"
+  },
+
+  mint: {
+    "--bg-color": "#d9fff5",
+    "--box-color": "#b2f2e6",
+    "--text-color": "#004d40"
+  },
+
+  royal: {
+    "--bg-color": "#1a0f3c",
+    "--box-color": "#3d2a7a",
+    "--text-color": "#cc04f9"
+  },
+
+  cafe: {
+    "--bg-color": "#4b3621",
+    "--box-color": "#7b5e3b",
+    "--text-color": "#f7e7ce"
+  },
+
+  storm: {
+    "--bg-color": "#1c1f26",
+    "--box-color": "#2e3440",
+    "--text-color": "#ffd60a"
+  },
+
+  bubblegum: {
+    "--bg-color": "#ffb6c1",
+    "--box-color": "#ff8fa3",
+    "--text-color": "#4a1c2a"
+  },
+
+  citrus: {
+    "--bg-color": "#fff4cc",
+    "--box-color": "#ffe08a",
+    "--text-color": "#5a3d00"
   }
 };

@@ -46,6 +46,29 @@ function ProjectTaskManager() {
   // ─── STATE FOR THEMES ─────────────────────────────────────────────────────────
 
   const [showThemeMenu, setShowThemeMenu] = useState(false)
+  const [showAllThemes, setShowAllThemes] = useState(false);
+
+  // Hide extra themes
+  useEffect(() => {
+    if (!showThemeMenu) {
+      setShowAllThemes(false);
+    }
+  }, [showThemeMenu]);
+
+  // Load usage data
+  const usage = JSON.parse(localStorage.getItem("themeUsage") || "{}");
+
+  // Get all theme names
+  const themeNames = Object.keys(themes);
+
+  // Sort by usage (most used first)
+  themeNames.sort((a, b) => {
+    const countA = usage[a] || 0;
+    const countB = usage[b] || 0;
+    return countB - countA;
+  });
+  const firstFive = themeNames.slice(0, 5);
+  const remaining = themeNames.slice(5);
 
   // State for warning
   const [showLateWarnings, setShowLateWarnings] = useState(true);
@@ -89,15 +112,22 @@ function ProjectTaskManager() {
   // ═══════════════════════════════════════════════════════════════════════════════
 
   function setTheme(themeName) {
+    // Save theme
     localStorage.setItem("theme", themeName);
-    const root = document.documentElement
-    const theme = themes[themeName]
 
-    if (!theme) return
+    // Apply CSS vars
+    const root = document.documentElement;
+    const theme = themes[themeName];
+    if (!theme) return;
 
     Object.entries(theme).forEach(([key, value]) => {
-      root.style.setProperty(key, value)
-    })
+      root.style.setProperty(key, value);
+    });
+
+    // Track usage count
+    const usage = JSON.parse(localStorage.getItem("themeUsage") || "{}");
+    usage[themeName] = (usage[themeName] || 0) + 1;
+    localStorage.setItem("themeUsage", JSON.stringify(usage));
   }
 
   async function handleToggleComplete(taskId, currentStatus) {
@@ -332,7 +362,6 @@ function ProjectTaskManager() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Link to="/projects">Old Things</Link>
       <h1>Project Task Manager</h1>
 
       {/* ─── PROJECT SELECTOR ─────────────────────────────────────────────── */}
@@ -479,18 +508,27 @@ function ProjectTaskManager() {
         <button onClick={() => setShowThemeMenu(!showThemeMenu)}>Themes</button>
         <button onClick={() => setShowRickRoll(true)}>😋</button>
       </div>
-      <div className={`toggle ${showThemeMenu ? "theme-visible" : "theme-hidden"}`}>
+      {showThemeMenu && (
         <div className="theme-buttons">
-          <button onClick={() => setTheme("dark")}>Dark</button>
-          <button onClick={() => setTheme("ocean")}>Ocean</button>
-          <button onClick={() => setTheme("sunset")}>Sunset</button>
-          <button onClick={() => setTheme("forest")}>Forest</button>
-          <button onClick={() => setTheme("lavender")}>Lavender</button>
-          <button onClick={() => setTheme("cyberpunk")}>Cyberpunk</button>
-          <button onClick={() => setTheme("sand")}>Sand</button>
-          <button onClick={() => setTheme("midnight")}>Midnight</button>
+          {firstFive.map(name => (
+            <button key={name} onClick={() => setTheme(name)}>
+              {name.charAt(0).toUpperCase() + name.slice(1)}
+            </button>
+          ))}
+
+          {!showAllThemes && remaining.length > 0 && (
+            <button onClick={() => setShowAllThemes(true)}>...</button>
+          )}
+
+          {showAllThemes &&
+            remaining.map(name => (
+              <button key={name} onClick={() => setTheme(name)}>
+                {name.charAt(0).toUpperCase() + name.slice(1)}
+              </button>
+            ))}
         </div>
-      </div>
+      )}
+      <Link to="/projects">Old Things</Link>
     </div>
   )
 }
