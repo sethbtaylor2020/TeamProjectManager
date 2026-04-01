@@ -24,9 +24,11 @@ Maintaining Documentation: Seth Taylor
 Create & Display Presentations: Matthew
 Submit Team Assignments: Jacob / Anyone
 
+## Running Locally
 Setting up supabase connection by running this command:  npm install @supabase/supabase-js
 To run the website locally, use this command: npm run dev
 
+## Reflection
 What the team Learned?
 The complications of building web applications became very apparent. A litte change could cause the page to refuse to run outright. We learned how to better us React. We also learned how to use Supabase. We also touched upon node.js, to store as well as set up the website values.
 
